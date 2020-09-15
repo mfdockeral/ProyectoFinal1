@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoFinal1.RegisterPage">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On
+                    Platform="iOS"
+                    Value="10, 10, 10, 50" />
+                <On
+                    Platform="Android"
+                    Value="10, 10, 10, 20" />
+                <On
+                    Platform="UWP"
+                    Value="0, 10, 0, 0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Image HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Start"
+                   Source="logo.png"
+                   WidthRequest="200"
+                   HeightRequest="200"/>
+
+
+            <!-- Crear un Entry para que el usuario pueda introducir la clave
+                y hacer Binding a la propiedad Email
+            -->
+
+            <Entry Placeholder="Email"
+                   Text="{Binding Email}"
+                   HorizontalOptions="FillAndExpand"
+                   Keyboard="Email"/>
+
+            <Entry Placeholder="Password"
+                   Text="{Binding Password}"
+                   HorizontalOptions="FillAndExpand"
+                   IsPassword="True"/>
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+
+            <Button Text="Registrarse"
+                    Command="{Binding Register}"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    TextColor="White"
+                    BackgroundColor="Blue"
+                    CornerRadius="5"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

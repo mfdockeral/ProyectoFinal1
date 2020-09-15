@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoFinal1.AlbumDetailPage">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On
+                    Platform="iOS"
+                    Value="10, 10, 10, 50" />
+                <On
+                    Platform="Android"
+                    Value="10, 10, 10, 20" />
+                <On
+                    Platform="UWP"
+                    Value="0, 10, 0, 0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+            <CollectionView
+                ItemsSource="{Binding Photos}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView
+                            Padding="0">
+                            <Image
+                                Source="{Binding ThumbnailUrl}"
+                                HeightRequest="150"
+                                Aspect="AspectFill" />
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

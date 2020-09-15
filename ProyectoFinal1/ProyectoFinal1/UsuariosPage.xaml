@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoFinal1.UsuariosPage">
+    <ContentPage.Padding>
+        <OnPlatform
+            x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On
+                    Platform="iOS"
+                    Value="10, 10, 10, 50" />
+                <On
+                    Platform="Android"
+                    Value="10, 10, 10, 20" />
+                <On
+                    Platform="UWP"
+                    Value="0, 10, 0, 0" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <StackLayout>
+        <ActivityIndicator
+            IsRunning="{Binding IsBusy}" />
+        <ListView
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            ItemsSource="{Binding Users}"
+            HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal">
+                            <!-- Crear los controlers para mostrar la foto del usuario
+                                su nombre y el apellido, asi como el email haciendo bind a las propiedades
+                                avatar, first_name, last_name e email
+                            -->
+                            <Image Source="{Binding avatar}" WidthRequest="150" HeightRequest="150"/>
+                            <Label FontSize="Title" Text="{Binding first_name}"/>
+                                <Label FontSize="Body" Text="{Binding last_name}"/>
+                                <Label FontSize="Small" Text="{Binding email}"/>
+                                <StackLayout/>
+                            </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>
